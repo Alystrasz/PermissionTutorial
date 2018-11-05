@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Tutoriel : permissions</string>
+    <string name="planemode_btn">Wi-Fi</string>
+    <string name="check_permission">Vérifier les permissions</string>
     <string name="switch_name">Permission d\'accéder aux contacts</string>
     <string name="list_contacts">Lister mes contacts</string>
-    <string name="check_contacts_permission">Vérifier les permissions</string>
     <string name="permission_hint">Pour retirer les permissions de l\'application, rendez-vous dans les paramètres du téléphone, trouvez l\'application sous le menu "Applications", et supprimez les autorisations dans l\'onglet "Autorisations".</string>
+    <string name="wifi_hint">Via ce switch, vous pouvez activer ou désactiver le wifi de votre téléphone.</string>
 </resources>

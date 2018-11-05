@@ -62,6 +62,10 @@ class MainActivity : AppCompatActivity() {
         checkBtn.setOnClickListener {
             showMessage(getPermissionText(), true)
         }
+
+        changeActivity_btn.setOnClickListener {
+            startActivity(Intent(applicationContext, NormalPermissionActivity::class.java))
+        }
     }
 
 
