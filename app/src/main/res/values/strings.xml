@@ -6,4 +6,6 @@
     <string name="list_contacts">Lister mes contacts</string>
     <string name="permission_hint">Pour retirer les permissions de l\'application, rendez-vous dans les paramètres du téléphone, trouvez l\'application sous le menu "Applications", et supprimez les autorisations dans l\'onglet "Autorisations".</string>
     <string name="wifi_hint">Via ce switch, vous pouvez activer ou désactiver le wifi de votre téléphone.</string>
+    <string name="get_wifi">Etat du Wi-Fi</string>
+    <string name="contacts_list">Liste des contacts du téléphone</string>
 </resources>

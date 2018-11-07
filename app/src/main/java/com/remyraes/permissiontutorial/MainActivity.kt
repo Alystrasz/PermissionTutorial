@@ -63,6 +63,16 @@ class MainActivity : AppCompatActivity() {
             showMessage(getPermissionText(), true)
         }
 
+        contactsBtn.setOnClickListener {
+            if(!hasPermission()) {
+                showMessage("Vous n'avez pas la permission !", true)
+            } else {
+                val builder = ContactOperations.loadContacts(contentResolver)
+                contactsList.text = builder.toString()
+            }
+
+        }
+
         changeActivity_btn.setOnClickListener {
             startActivity(Intent(applicationContext, NormalPermissionActivity::class.java))
         }
@@ -87,6 +97,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
 
     private fun requestPermission() {
         ActivityCompat.requestPermissions(this,

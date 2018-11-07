@@ -7,7 +7,7 @@
     tools:context=".NormalPermissionActivity">
 
     <Button
-        android:id="@+id/checkwifi_btn"
+        android:id="@+id/checkWifiPermissionBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -50,11 +50,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
         android:clickable="true"
         app:backgroundTint="@color/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/checkwifi_btn"
+        app:layout_constraintBottom_toTopOf="@+id/checkWifiBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_media_play" />
+
+    <Button
+        android:id="@+id/checkWifiBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/get_wifi"
+        app:layout_constraintBottom_toTopOf="@+id/checkWifiPermissionBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
