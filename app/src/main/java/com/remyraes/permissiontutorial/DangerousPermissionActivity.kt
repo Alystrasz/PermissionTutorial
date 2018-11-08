@@ -19,7 +19,7 @@ import android.support.v7.app.AlertDialog
  * https://developer.android.com/guide/topics/permissions
  */
 
-class MainActivity : AppCompatActivity() {
+class DangerousPermissionActivity : AppCompatActivity() {
     private val permission = Manifest.permission.READ_CONTACTS
 
     override fun onResume() {
@@ -31,13 +31,33 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // -----------------------------------------------------------------------------------------
+        // Etape 4 : listons les contacts !
+        // -----------------------------------------------------------------------------------------
+
+        contactsBtn.setOnClickListener {
+            if(!hasPermission()) {
+                showMessage("Vous n'avez pas la permission !", true)
+            } else {
+                val builder = ContactOperations.loadContacts(contentResolver)
+                contactsList.text = builder.toString()
+            }
+
+        }
+
+        // -----------------------------------------------------------------------------------------
+        // Etape 5 : implémentons le code qui permet de demander la permission !
+        // -----------------------------------------------------------------------------------------
+
         permissionSwitch.setOnClickListener {
             val checked = permissionSwitch.isChecked
 
             // demander la permission à l'utilisateur
             if(checked) {
+
+                // Etape 7 : on complètera ce code un peu plus tard... Suspense !
                 if(shouldShowRequestPermissionRationale(permission)) {
-                    val builder = AlertDialog.Builder(this@MainActivity)
+                    val builder = AlertDialog.Builder(this@DangerousPermissionActivity)
                     builder.setTitle("Encore ?!")
                     builder.setMessage("L'utilisateur a déjà refusé cette permission par le passé...")
                     builder.setOnDismissListener {
@@ -59,22 +79,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        checkBtn.setOnClickListener {
-            showMessage(getPermissionText(), true)
-        }
+        // -----------------------------------------------------------------------------------------
+        // -----------------------------------------------------------------------------------------
 
-        contactsBtn.setOnClickListener {
-            if(!hasPermission()) {
-                showMessage("Vous n'avez pas la permission !", true)
-            } else {
-                val builder = ContactOperations.loadContacts(contentResolver)
-                contactsList.text = builder.toString()
-            }
-
-        }
 
         changeActivity_btn.setOnClickListener {
             startActivity(Intent(applicationContext, NormalPermissionActivity::class.java))
+        }
+
+        checkBtn.setOnClickListener {
+            showMessage(getPermissionText(), true)
         }
     }
 
@@ -82,6 +96,10 @@ class MainActivity : AppCompatActivity() {
     /**
      * Fonction callback appelée lorsque l'utilisateur a répondu à la demande de permission.
      */
+    // ---------------------------------------------------------------------------------------------
+    // Etape 6 : Prenons en compte la réponse de l’utilisateur !
+    // ---------------------------------------------------------------------------------------------
+
     override fun onRequestPermissionsResult(requestCode: Int,
                                             permissions: Array<String>, grantResults: IntArray) {
 
@@ -98,6 +116,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    // ---------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
 
     private fun requestPermission() {
         ActivityCompat.requestPermissions(this,
