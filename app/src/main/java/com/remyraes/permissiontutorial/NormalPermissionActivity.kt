@@ -27,19 +27,7 @@ class NormalPermissionActivity : AppCompatActivity() {
         // Etape 2 : ajoutons le code permettant de jouer avec le Wi-Fi !
         // -----------------------------------------------------------------------------------------
 
-        // change l'état du Wi-Fi sur le téléphone
-        wifi_btn.setOnClickListener {
-            wifiManager.setWifiEnabled(!wifiManager.isWifiEnabled)
-        }
-
-        // affiche l'état du Wi-Fi
-        checkWifiBtn.setOnClickListener {
-            val msg = when(wifiManager.isWifiEnabled) {
-                true -> "Le wifi est activé"
-                false -> "Le wifi est désactivé"
-            }
-            showMessage(msg, true)
-        }
+        // TODO
 
         // -----------------------------------------------------------------------------------------
         // -----------------------------------------------------------------------------------------

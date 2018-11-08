@@ -35,49 +35,13 @@ class DangerousPermissionActivity : AppCompatActivity() {
         // Etape 4 : listons les contacts !
         // -----------------------------------------------------------------------------------------
 
-        contactsBtn.setOnClickListener {
-            if(!hasPermission()) {
-                showMessage("Vous n'avez pas la permission !", true)
-            } else {
-                val builder = ContactOperations.loadContacts(contentResolver)
-                contactsList.text = builder.toString()
-            }
-
-        }
+        // TODO
 
         // -----------------------------------------------------------------------------------------
         // Etape 5 : implémentons le code qui permet de demander la permission !
         // -----------------------------------------------------------------------------------------
 
-        permissionSwitch.setOnClickListener {
-            val checked = permissionSwitch.isChecked
-
-            // demander la permission à l'utilisateur
-            if(checked) {
-
-                // Etape 7 : on complètera ce code un peu plus tard... Suspense !
-                if(shouldShowRequestPermissionRationale(permission)) {
-                    val builder = AlertDialog.Builder(this@DangerousPermissionActivity)
-                    builder.setTitle("Encore ?!")
-                    builder.setMessage("L'utilisateur a déjà refusé cette permission par le passé...")
-                    builder.setOnDismissListener {
-                        requestPermission()
-                    }
-                    builder.create().show()
-                } else {
-                    requestPermission()
-                }
-            }
-            // lancement d'un intent paramètres, pour amener l'utilisateur à retirer la permission
-            else {
-                val intent = Intent()
-                intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                val uri = Uri.fromParts("package", packageName, null)
-                intent.data = uri
-                startActivity(intent)
-                showMessage( "Veuillez enlever les autorisations de l'application sous le menu \"Autorisations\".", true)
-            }
-        }
+        // TODO
 
         // -----------------------------------------------------------------------------------------
         // -----------------------------------------------------------------------------------------
@@ -100,21 +64,7 @@ class DangerousPermissionActivity : AppCompatActivity() {
     // Etape 6 : Prenons en compte la réponse de l’utilisateur !
     // ---------------------------------------------------------------------------------------------
 
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<String>, grantResults: IntArray) {
-
-        // l'utilisateur a accepté d'attribuer la permission à l'application
-        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            showMessage("La permission a été accordée !", true)
-        }
-
-        // l'utilisateur a refusé d'attribuer la permission à l'application
-        else {
-            permissionSwitch.isChecked = false
-            showMessage("La permission a été refusée...", true)
-        }
-
-    }
+    // TODO
 
     // ---------------------------------------------------------------------------------------------
     // ---------------------------------------------------------------------------------------------
