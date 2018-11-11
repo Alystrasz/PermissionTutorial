@@ -48,7 +48,7 @@ class DangerousPermissionActivity : AppCompatActivity() {
 
 
         changeActivity_btn.setOnClickListener {
-            startActivity(Intent(applicationContext, NormalPermissionActivity::class.java))
+            startActivity(Intent(applicationContext, NormalPermissionActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
         }
 
         checkBtn.setOnClickListener {
