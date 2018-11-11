@@ -20,8 +20,9 @@ class NormalPermissionActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_normal_permission)
-        
-        wifi_btn.isChecked = wifiManager.isWifiEnabled
+
+        if(hasPermission())
+            wifi_btn.isChecked = wifiManager.isWifiEnabled
 
         // -----------------------------------------------------------------------------------------
         // Etape 2 : ajoutons le code permettant de jouer avec le Wi-Fi !
